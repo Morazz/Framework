@@ -24,15 +24,4 @@ public class CheckoutTest extends CommonConditions{
                 .enterCouponCode(TestDataReader.getTestData("test.data.promocode"));
         assertThat(expectedMessage, is(equalTo(TestDataReader.getTestData("test.data.coupon.error"))));
     }
-
-    @Test
-    public void enterInvalidCardTest() {
-        Card testCard = CardCreator.withCredentialsFromProperties(cardNumber);
-        Card expectedCard = new ProductPage(driver)
-                .openPage()
-                .addProducts(TestDataReader.getTestData("test.data.count"))
-                .goToCart()
-                .goToCheckoutPage()
-
-    }
 }
