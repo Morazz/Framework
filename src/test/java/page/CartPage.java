@@ -8,10 +8,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.mustache.Value;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import page.abstractpages.AbstractPage;
 
 public class CartPage extends AbstractPage {
 
@@ -54,7 +53,7 @@ public class CartPage extends AbstractPage {
     public boolean checkFreeGift() {
         logger.info("If price is more than 50 check if free item added");
         new WebDriverWait(driver, timeWait)
-                .until(ExpectedConditions.visibilityOf(freeItem);
+                .until(ExpectedConditions.visibilityOf(freeItem));
         return freeItem.isEnabled();
     }
 

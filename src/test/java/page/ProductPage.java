@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import page.abstractpages.AbstractPage;
 
 public class ProductPage extends AbstractPage {
     private final String PRODUCTPAGE_URL = "https://demeterfragrance.com/sandalwood.html";
