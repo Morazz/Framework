@@ -24,8 +24,9 @@ public class ProductPage extends AbstractPage {
     @FindBy(id = "fc")
     private WebElement cartPreview;
 
-    @FindBy(css = "div[data-item-code = 'FreeGift50']")
+    @FindBy(xpath= "//*[@id=\"fc-cart-form\"]/div[1]/div[2]/div/div[4]")
     private WebElement freeItem;
+
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -39,6 +40,13 @@ public class ProductPage extends AbstractPage {
         return this;
     }
 
+    public boolean checkFreeGift() {
+        //return itemsInfo.findElements(By.id("fc-cart--fixed-width")).size() > 0;
+        new WebDriverWait(driver, timeWait)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='fc-cart-form']/div[1]/div[2]/div/div[4]")));
+        return freeItem.isDisplayed();
+    }
+
     public CartPage goToCart() {
         new WebDriverWait(driver, timeWait)
                 .until(ExpectedConditions.textToBe(By.className("fc-subtotal__label"), "Subtotal"));
@@ -46,12 +54,6 @@ public class ProductPage extends AbstractPage {
         return new CartPage(driver);
     }
 
-    public boolean checkFreeGift() {
-        //return itemsInfo.findElements(By.id("fc-cart--fixed-width")).size() > 0;
-        new WebDriverWait(driver, timeWait)
-                .until(driver -> cartPreview.isDisplayed());
-        return freeItem.isDisplayed();
-    }
 
     @Override
     public ProductPage openPage() {

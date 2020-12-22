@@ -9,20 +9,22 @@ import util.GetPriceInt;
 
 import javax.swing.text.html.parser.Parser;
 
+import static util.Resolver.resolvePrice;
+
 public class CertificatePage extends AbstractPage {
     private final String CERTIFICATEPAGE_URL = "https://demeterfragrance.com/gift-certificate.html";
     private Certificate certificate;
 
-    @FindBy(name = "recipient_name")
+    @FindBy(id = "recipient_name")
     private WebElement recipient;
 
-    @FindBy(name = "recipient_email")
+    @FindBy(id = "recipient_email")
     private WebElement email;
 
-    @FindBy(name = "sender_name")
+    @FindBy(id = "sender_name")
     private WebElement sender;
 
-    @FindBy(name = "price")
+    @FindBy(id = "price_10")
     private WebElement price;
 
     @FindBy(className = "addtocart")
@@ -41,9 +43,8 @@ public class CertificatePage extends AbstractPage {
         sender.click();
         sender.sendKeys(certificate.getSenderName());
         price.click();
-        certificate.setPrice(GetPriceInt.getPriceValue(price.getText()));
         addButton.click();
-        return new Certificate(recipient.getText(), email.getText(), sender.getText(), price.getText());
+        return new Certificate(recipient.getText(), email.getText(), sender.getText(), resolvePrice(price.getText()));
     }
 
     @Override

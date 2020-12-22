@@ -12,7 +12,7 @@ public class CheckoutPage {
     private WebDriver driver;
     private final int timeWait = 10;
 
-    @FindBy(name = "use_different_addresses")
+    @FindBy(id = "use_different_addresses")
     private WebElement billingAddressOption;
 
     @FindBy(className = "fc-checkout__section--customer-billing-address")
@@ -36,6 +36,8 @@ public class CheckoutPage {
     }
 
     public boolean checkBillingAddressState() {
+        new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.elementToBeClickable(billingAddressOption));
         if (!billingAddressOption.isSelected()) {
             billingAddressOption.click();
         }

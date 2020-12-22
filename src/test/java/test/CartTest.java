@@ -2,8 +2,9 @@ package test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.MainPage;
 import page.ProductPage;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CartTest extends CommonConditions {
     private final String productsAmount = "100";
@@ -13,8 +14,10 @@ public class CartTest extends CommonConditions {
         boolean expectedCartState = new ProductPage(driver)
                 .openPage()
                 .addProducts(productsAmount)
+                .goToCart()
                 .checkFreeGift();
         Assert.assertTrue(expectedCartState);
+        assertThat(expectedCartState).isTrue();
     }
 
     @Test
@@ -25,6 +28,6 @@ public class CartTest extends CommonConditions {
                 .goToCart()
                 .goToCheckoutPage()
                 .checkBillingAddressState();
-        Assert.assertTrue(expectedBillingAddressState);
+        assertThat(expectedBillingAddressState).isTrue();
     }
 }

@@ -6,18 +6,18 @@ import org.testng.annotations.Test;
 import page.CertificatePage;
 import service.CertificateCreator;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class AddCertificateTest extends CommonConditions{
 
+    private String certificateNumber = "first";
+
     @Test
     public void addCertificate() {
-        Certificate testCertificate = CertificateCreator.withParametersFromProperty("first");
+        Certificate testCertificate = CertificateCreator.withParametersFromProperty(certificateNumber);
         Certificate expectedCertificate = new CertificatePage(driver)
                 .openPage()
                 .addCertificate(testCertificate);
-        assertThat(expectedCertificate, is(equalTo(testCertificate)));
+        assertThat(expectedCertificate).isEqualTo(testCertificate);
     }
 }

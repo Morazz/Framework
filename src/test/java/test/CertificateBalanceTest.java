@@ -4,13 +4,15 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.CertificateBalancePage;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class CertificateBalanceTest extends CommonConditions {
 
     @Test
-    public void getCertificateState() {
+    public void checkThatCertificateCreated() {
         boolean expectedCertificatePageCondition = new CertificateBalancePage(driver)
                 .openPage()
                 .getCertificateBalance();
-        Assert.assertTrue(expectedCertificatePageCondition);
+        assertThat(expectedCertificatePageCondition).isTrue();
     }
 }
