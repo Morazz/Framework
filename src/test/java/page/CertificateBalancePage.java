@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import page.abstractpages.AbstractPage;
+import page.abstractPages.AbstractPage;
 import service.TestDataReader;
 
 public class CertificateBalancePage extends AbstractPage {

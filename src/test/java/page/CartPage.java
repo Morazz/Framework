@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.apache.logging.log4j.Logger;
-import page.abstractpages.AbstractPage;
+import page.abstractPages.AbstractPage;
 
 public class CartPage extends AbstractPage {
 

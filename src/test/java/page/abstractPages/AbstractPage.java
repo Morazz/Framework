@@ -1,4 +1,4 @@
-package page.abstractpages;
+package page.abstractPages;
 
 import org.openqa.selenium.WebDriver;
 

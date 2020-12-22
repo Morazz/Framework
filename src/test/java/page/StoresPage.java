@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page.abstractpages.AbstractPage;
+import page.abstractPages.AbstractPage;
 
 public class StoresPage extends AbstractPage {
     private final String STORES_URL = "https://demeterfragrance.com/stores/";
