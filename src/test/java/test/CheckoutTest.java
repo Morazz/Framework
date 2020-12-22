@@ -33,6 +33,6 @@ public class CheckoutTest extends CommonConditions{
                 .addProducts(TestDataReader.getTestData("test.data.count"))
                 .goToCart()
                 .goToCheckoutPage()
-                .
+
     }
 }

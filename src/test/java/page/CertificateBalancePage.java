@@ -5,9 +5,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import service.TestDataReader;
+
 public class CertificateBalancePage extends AbstractPage {
     private final String BALANCEPAGE_URL = "https://demeterfragrance.com/check-gift-card-balance.html";
     private final String certificate = "123123";
+    private final Logger logger = LogManager.getRootLogger();
+
 
     @FindBy(id = "c_code")
     private WebElement certificateInput;
@@ -24,8 +30,9 @@ public class CertificateBalancePage extends AbstractPage {
     }
 
     public boolean getCertificateBalance() {
+        logger.info("Check if certificate balance is displayed");
         certificateInput.click();
-        certificateInput.sendKeys(certificate);
+        certificateInput.sendKeys(TestDataReader.getTestData("test.data.promocode"));
         getBalanceButton.click();
         return certificateBalance.isDisplayed();
     }
