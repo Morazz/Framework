@@ -1,0 +1,15 @@
+*.db
+*.log
+/target
+/bin
+/**/results
+/**/.idea
+/**/.allure
+/**/out
+/**/*.iml
+/**/.idea
+/**/out
+/**/*.iml
+/**/target
+*.swp
+/**/main
