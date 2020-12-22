@@ -13,7 +13,6 @@ import static org.hamcrest.Matchers.is;
 public class CheckoutTest extends CommonConditions{
     private String cardNumber = "first";
 
-
     @Test
     public void enterInvalidCouponCodeTest() {
         String expectedMessage = new ProductPage(driver)

@@ -54,9 +54,8 @@ public class CartPage extends AbstractPage {
     public boolean checkFreeGift() {
         logger.info("If price is more than 50 check if free item added");
         new WebDriverWait(driver, timeWait)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"fc-cart-form\"]/div[1]/div[2]/div/div[4]")));
-        WebElement web = driver.findElement(By.xpath("//*[@id=\"fc-cart-form\"]/div[1]/div[2]/div/div[4]"));
-        return web.isDisplayed();
+                .until(ExpectedConditions.visibilityOf(freeItem);
+        return freeItem.isEnabled();
     }
 
     @Override
