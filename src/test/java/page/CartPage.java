@@ -47,9 +47,6 @@ public class CartPage extends AbstractPage {
 
 
     public boolean checkFreeGift() {
-        //return itemsInfo.findElements(By.id("fc-cart--fixed-width")).size() > 0;
-//        new WebDriverWait(driver, timeWait)
-//                .until(driver -> freeItem.isDisplayed());
         new WebDriverWait(driver, timeWait)
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"fc-cart-form\"]/div[1]/div[2]/div/div[4]")));
         WebElement web = driver.findElement(By.xpath("//*[@id=\"fc-cart-form\"]/div[1]/div[2]/div/div[4]"));

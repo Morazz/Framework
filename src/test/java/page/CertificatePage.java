@@ -5,9 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import util.GetPriceInt;
-
-import javax.swing.text.html.parser.Parser;
 
 import static util.Resolver.resolvePrice;
 

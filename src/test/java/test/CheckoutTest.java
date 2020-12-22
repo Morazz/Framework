@@ -28,6 +28,11 @@ public class CheckoutTest extends CommonConditions{
     @Test
     public void enterInvalidCardTest() {
         Card testCard = CardCreator.withCredentialsFromProperties(cardNumber);
-
+        Card expectedCard = new ProductPage(driver)
+                .openPage()
+                .addProducts(TestDataReader.getTestData("test.data.count"))
+                .goToCart()
+                .goToCheckoutPage()
+                .
     }
 }
