@@ -18,6 +18,6 @@ public class AddCertificateTest extends CommonConditions{
         Certificate expectedCertificate = new CertificatePage(driver)
                 .openPage()
                 .addCertificate(testCertificate);
-        assertThat(resolvePrice());
+        assertThat(expectedCertificate, is(equalTo(testCertificate)));
     }
 }

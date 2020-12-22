@@ -43,11 +43,7 @@ public class CertificatePage extends AbstractPage {
         price.click();
         certificate.setPrice(GetPriceInt.getPriceValue(price.getText()));
         addButton.click();
-        return new Certificate(recipient.getText(), email.getText(), sender.getText());
-    }
-
-    public Certificate getCertificate() {
-        return certificate;
+        return new Certificate(recipient.getText(), email.getText(), sender.getText(), price.getText());
     }
 
     @Override

@@ -18,6 +18,9 @@ public class CertificateCreator {
         String senderName = resolveTemplate(SENDER_NAME_TEMPLATE, certificateNumber);
         String price = resolveTemplate(PRICE_TEMPLATE, certificateNumber);
 
-        return new Certificate()
+        return new Certificate(TestDataReader.getTestData(recipientName),
+                               TestDataReader.getTestData(recipientEmail),
+                               TestDataReader.getTestData(senderName),
+                               Integer.parseInt(TestDataReader.getTestData(price)));
     }
 }

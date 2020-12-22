@@ -2,17 +2,25 @@ package service;
 
 import model.Card;
 
+import static util.Resolver.resolveTemplate;
+
 public class CardCreator {
-/*    public static final String TESTDATA_CARD = "1234123412341234";
-    public static final String TESTDATA_YEAR = 2021;
-    public static final String  TESTDATA_MONTH = 11;
-    public static final String TESTDATA_CSC = 111;
+    public static final String CARD_TEMPLATE = "test.data.year";
+    public static final String YEAR_TEMPLATE = "test.data.year";
+    public static final String MONTH_TEMPLATE = "test.data.month";
+    public static final String CSC_TEMPLATE = "test.data.CSC";
 
-    public Card withCredentialsFromProperties() {
-        return new Card(TestDataReader.getTestData(TESTDATA_CARD),
-                        TestDataReader.getTestData(TESTDATA_MONTH),
-                        TestDataReader.getTestData(TESTDATA_YEAR),
-                        TestDataReader.getTestData(TESTDATA_CSC));
+    public static Card withCredentialsFromProperties(String cardNumber) {
+        cardNumber = cardNumber.toLowerCase();
 
-    } */
+        String card = resolveTemplate(CARD_TEMPLATE, cardNumber);
+        String year = resolveTemplate(YEAR_TEMPLATE, cardNumber);
+        String month = resolveTemplate(MONTH_TEMPLATE, cardNumber);
+        String CSC = resolveTemplate(CSC_TEMPLATE, cardNumber);
+
+        return new Card(Integer.parseInt(TestDataReader.getTestData(card)),
+                        Integer.parseInt(TestDataReader.getTestData(month)),
+                        Integer.parseInt(TestDataReader.getTestData(year)),
+                        Integer.parseInt(TestDataReader.getTestData(CSC)));
+    }
 }
