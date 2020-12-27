@@ -1,6 +1,5 @@
 package test;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.ProductPage;
 
@@ -16,7 +15,7 @@ public class CartTest extends CommonConditions {
                 .addProducts(productsAmount)
                 .goToCart()
                 .checkFreeGift();
-        Assert.assertTrue(expectedCartState);
+        
         assertThat(expectedCartState).isTrue();
     }
 
@@ -28,6 +27,7 @@ public class CartTest extends CommonConditions {
                 .goToCart()
                 .goToCheckoutPage()
                 .checkBillingAddressState();
+
         assertThat(expectedBillingAddressState).isTrue();
     }
 }
