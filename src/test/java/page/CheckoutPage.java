@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static page.abstractPages.AbstractPage.waitElementToBeClickable;
+
 public class CheckoutPage {
     private WebDriver driver;
     private final int timeWait = 10;
@@ -32,12 +34,10 @@ public class CheckoutPage {
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
     public boolean checkBillingAddressState() {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.elementToBeClickable(billingAddressOption));
+        waitElementToBeClickable(driver, billingAddressOption);
         if (!billingAddressOption.isSelected()) {
             billingAddressOption.click();
         }
@@ -46,8 +46,7 @@ public class CheckoutPage {
 
     public String enterCouponCode(String couponCode) {
         enterCouponButton.click();
-        new WebDriverWait(driver, timeWait)
-                .until(ExpectedConditions.elementToBeClickable(couponInput));
+        waitElementToBeClickable(driver, couponInput);
         couponInput.sendKeys(couponCode);
         applyCouponButton.click();
         new WebDriverWait(driver, timeWait)

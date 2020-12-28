@@ -10,11 +10,10 @@ public class CartTest extends CommonConditions {
 
     @Test
     public void addProductsTest() {
-        boolean expectedCartState = new ProductPage(driver)
+        ProductPage productPage = new ProductPage(driver)
                 .openPage()
-                .addProducts(productsAmount)
-                .goToCart()
-                .checkFreeGift();
+                .addProducts(productsAmount);
+
         assertThat(expectedCartState).isTrue();
     }
 

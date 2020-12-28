@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.logging.log4j.Logger;
 import page.abstractPages.AbstractPage;
 
+import static util.Resolver.resolveTemplate;
+
 public class CartPage extends AbstractPage {
 
     private final int timeWait = 10;
@@ -53,6 +55,10 @@ public class CartPage extends AbstractPage {
         new WebDriverWait(driver, timeWait)
                 .until(ExpectedConditions.visibilityOf(freeItem));
         return freeItem.isEnabled();
+    }
+
+    public double getTotalPrice() {
+        return resolveTemplate(subtotalValue, te);
     }
 
     @Override

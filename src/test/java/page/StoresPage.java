@@ -10,7 +10,6 @@ import page.abstractPages.AbstractPage;
 
 public class StoresPage extends AbstractPage {
     private final String STORES_URL = "https://demeterfragrance.com/stores/";
-    private final int timeWait = 10;
 
     @FindBy(id = "address")
     private WebElement zipInput;
@@ -23,15 +22,13 @@ public class StoresPage extends AbstractPage {
 
     public StoresPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
     public boolean findStore(String zip) {
         zipInput.click();
         zipInput.sendKeys(zip);
         findButton.click();
-        new WebDriverWait(driver, timeWait)
-                .until(ExpectedConditions.visibilityOf(storesList));
+        waitElementVisibility(driver, storesList);
         return storesList.isDisplayed();
     }
 
