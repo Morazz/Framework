@@ -37,10 +37,12 @@ public class CartPage extends AbstractPage {
     @FindBy(className = "fc-action--checkout--button")
     private WebElement checkoutButton;
 
+    @FindBy(name = "item_count")
+    private WebElement itemsCount;
+
     public CartPage(WebDriver driver) {
         super(driver);
     }
-
 
     public CheckoutPage goToCheckoutPage() {
         logger.info("Going to checkout page");
@@ -49,12 +51,15 @@ public class CartPage extends AbstractPage {
         return new CheckoutPage(driver);
     }
 
-
     public boolean checkFreeGift() {
         logger.info("If price is more than 50 check if free item added");
         new WebDriverWait(driver, timeWait)
                 .until(ExpectedConditions.visibilityOf(freeItem));
         return freeItem.isEnabled();
+    }
+
+    public int getProductsAmount() {
+        return Integer.parseInt(itemsCount.getAttribute("value"));
     }
 
     public double getTotalPrice() {

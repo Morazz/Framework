@@ -30,7 +30,6 @@ public class ProductPage extends AbstractPage {
     @FindBy(xpath= PATTERN.replace("%", "FreeItem50"))
     private WebElement freeItem;
 
-
     public ProductPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
