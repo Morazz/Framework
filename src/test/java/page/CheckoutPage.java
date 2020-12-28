@@ -12,6 +12,7 @@ import static page.abstractPages.AbstractPage.waitElementToBeClickable;
 
 public class CheckoutPage {
     private WebDriver driver;
+int timeWait = 10;
 
     @FindBy(id = "use_different_addresses")
     private WebElement billingAddressOption;
@@ -33,6 +34,7 @@ public class CheckoutPage {
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public boolean checkBillingAddressState() {

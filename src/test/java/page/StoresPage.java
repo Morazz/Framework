@@ -22,6 +22,7 @@ public class StoresPage extends AbstractPage {
 
     public StoresPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     public boolean findStore(String zip) {

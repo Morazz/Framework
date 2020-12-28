@@ -27,8 +27,8 @@ public class ProductPage extends AbstractPage {
     private WebElement cartPreview;
     
 
-    @FindBy(xpath= PATTERN.replace("%", "FreeItem50"))
-    private WebElement freeItem;
+   // @FindBy(xpath= PATTERN.replace("%", "FreeItem50"))
+    //private WebElement freeItem;
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -42,12 +42,12 @@ public class ProductPage extends AbstractPage {
         return this;
     }
 
-    public boolean checkFreeGift() {
+   /* public boolean checkFreeGift() {
         //return itemsInfo.findElements(By.id("fc-cart--fixed-width")).size() > 0;
         new WebDriverWait(driver, timeWait)
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='fc-cart-form']/div[1]/div[2]/div/div[4]")));
         return freeItem.isDisplayed();
-    }
+    } */
 
     public CartPage goToCart() {
         new WebDriverWait(driver, timeWait)

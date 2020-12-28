@@ -2,6 +2,7 @@ package test;
 
 import model.Card;
 import org.testng.annotations.Test;
+import page.CheckoutPage;
 import page.ProductPage;
 import service.CardCreator;
 import service.TestDataReader;
@@ -23,4 +24,14 @@ public class CheckoutTest extends CommonConditions{
                 .enterCouponCode(TestDataReader.getTestData("test.data.promocode"));
         assertThat(expectedMessage, is(equalTo(TestDataReader.getTestData("test.data.coupon.error"))));
     }
+
+ /*   @Test
+    public void enterInvalidCardTest() {
+        CheckoutPage checkoutPage = new ProductPage(driver)
+                .openPage()
+                .addProducts(TestDataReader.getTestData("test.data.count"))
+                .goToCart()
+                .goToCheckoutPage();
+
+    } */
 }

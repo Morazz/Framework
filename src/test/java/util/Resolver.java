@@ -2,12 +2,12 @@ package util;
 
 public class Resolver {
 
-    public static String resolvePrice(int price){
-        return  String.join(" ", Integer.toString(price), "$");
+    public static String resolvePrice(double price){
+        return  String.join(" ", Double.toString(price), "$");
     }
 
-    public static int resolvePrice(String price){
-        return  Integer.parseInt(price.substring(price.length()-1));
+    public static double resolvePrice(String price){
+        return  Double.parseDouble(price.substring(price.length()-1));
     }
 
     public static String resolveTemplate(String template, int data){

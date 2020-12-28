@@ -14,7 +14,7 @@ public class CertificatePage extends AbstractPage {
     private final String CERTIFICATEPAGE_URL = "https://demeterfragrance.com/gift-certificate.html";
     private Certificate certificate;
 
-    @FindBy(id = "recipient_name")
+    @FindBy(id="recipient_name")
     private WebElement recipient;
 
     @FindBy(id = "recipient_email")

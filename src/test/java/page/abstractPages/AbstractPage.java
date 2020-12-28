@@ -22,10 +22,10 @@ public abstract class AbstractPage
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static WebElement waitElementIsDisplayed(WebDriver driver, WebElement element) {
+  /*  public static WebElement waitElementIsDisplayed(WebDriver driver, WebElement element) {
         return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(driver -> element.isDisplayed());
-    }
+    } */
 
     public static WebElement waitElementVisibility(WebDriver driver, WebElement element) {
         return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)

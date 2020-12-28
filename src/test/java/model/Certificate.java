@@ -6,9 +6,9 @@ public class Certificate {
     private String recipientName;
     private String recipientEmail;
     private String senderName;
-    private int price;
+    private double price;
 
-    public Certificate(String recipientName, String recipientEmail, String senderName, int price) {
+    public Certificate(String recipientName, String recipientEmail, String senderName, double price) {
         this.recipientName = recipientName;
         this.recipientEmail = recipientEmail;
         this.senderName = senderName;
@@ -39,7 +39,7 @@ public class Certificate {
         this.senderName = senderName;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

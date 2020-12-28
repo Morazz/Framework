@@ -6,17 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.apache.logging.log4j.Logger;
 import page.abstractPages.AbstractPage;
 
-import static util.Resolver.resolveTemplate;
+import static util.Resolver.resolvePrice;
 
 public class CartPage extends AbstractPage {
 
     private final int timeWait = 10;
+    private static final String PATTERN = "//div[@data-item-code='%']";
     private final Logger logger = LogManager.getRootLogger();
 
     @FindBy(className = "fc-subtotal__value")
@@ -40,8 +39,12 @@ public class CartPage extends AbstractPage {
     @FindBy(name = "item_count")
     private WebElement itemsCount;
 
+    @FindBy(xpath= PATTERN)
+    private WebElement item;
+
     public CartPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     public CheckoutPage goToCheckoutPage() {
@@ -51,10 +54,13 @@ public class CartPage extends AbstractPage {
         return new CheckoutPage(driver);
     }
 
-    public boolean checkFreeGift() {
+     public boolean checkFreeGift() {
         logger.info("If price is more than 50 check if free item added");
-        new WebDriverWait(driver, timeWait)
-                .until(ExpectedConditions.visibilityOf(freeItem));
+
+        //new WebDriverWait(driver, timeWait)
+          //      .until(ExpectedConditions.visibilityOf(freeItem));
+        String path = PATTERN.replace("%", "FreeGift50");
+        WebElement freeItem = item.findElement(By.xpath(path));
         return freeItem.isEnabled();
     }
 
@@ -63,13 +69,13 @@ public class CartPage extends AbstractPage {
     }
 
     public double getTotalPrice() {
-        return resolveTemplate(subtotalValue, te);
+        return resolvePrice(subtotalValue.getAttribute("value"));
     }
 
     @Override
     public CartPage openPage() {
-        new WebDriverWait(driver, timeWait)
-                .until(ExpectedConditions.textToBe(By.className("fc-subtotal__label"), "Subtotal"));
+       // new WebDriverWait(driver, timeWait)
+              //  .until(ExpectedConditions.textToBe(By.className("fc-subtotal__label"), "Subtotal"));
         return new CartPage(driver);
     }
 }
