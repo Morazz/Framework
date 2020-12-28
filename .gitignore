@@ -7,9 +7,6 @@
 /**/.allure
 /**/out
 /**/*.iml
-/**/.idea
-/**/out
-/**/*.iml
 /**/target
 *.swp
 /**/main

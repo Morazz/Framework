@@ -42,8 +42,7 @@ public class CartPage extends AbstractPage {
 
     public CheckoutPage goToCheckoutPage() {
         logger.info("Going to checkout page");
-        new WebDriverWait(driver, timeWait)
-                .until(ExpectedConditions.elementToBeClickable(checkoutButton));
+        waitElementToBeClickable(driver, checkoutButton);
         checkoutButton.click();
         return new CheckoutPage(driver);
     }

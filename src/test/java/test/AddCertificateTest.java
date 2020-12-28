@@ -10,10 +10,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AddCertificateTest extends CommonConditions{
 
-    private String certificateNumber = "first";
-
     @Test
     public void addCertificate() {
+        String certificateNumber = "first";
         Certificate testCertificate = CertificateCreator.withParametersFromProperty(certificateNumber);
         Certificate expectedCertificate = new CertificatePage(driver)
                 .openPage()

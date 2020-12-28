@@ -10,25 +10,25 @@ public abstract class AbstractPage
     protected WebDriver driver;
 
     protected abstract AbstractPage openPage();
-    protected final int WAIT_TIMEOUT_SECONDS = 10;
+    protected static final int WAIT_TIMEOUT_SECONDS = 10;
 
     protected AbstractPage(WebDriver driver)
     {
         this.driver = driver;
     }
 
-    public static WebElement waitElementToBeClickable(WebDriver driver, long time, WebElement element) {
-        return new WebDriverWait(driver, time)
+    public static WebElement waitElementToBeClickable(WebDriver driver, WebElement element) {
+        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static WebElement waitElementIsDisplayed(WebDriver driver, long time, WebElement element) {
-        return new WebDriverWait(driver, time)
+    public static WebElement waitElementIsDisplayed(WebDriver driver, WebElement element) {
+        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(driver -> element.isDisplayed());
     }
 
-    public static WebElement waitElementVisibility(WebDriver driver, long time, WebElement element) {
-        return new WebDriverWait(driver, time)
+    public static WebElement waitElementVisibility(WebDriver driver, WebElement element) {
+        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.visibilityOf(element));
     }
 }

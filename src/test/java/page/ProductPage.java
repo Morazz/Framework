@@ -12,6 +12,7 @@ import page.abstractPages.AbstractPage;
 public class ProductPage extends AbstractPage {
     private final String PRODUCTPAGE_URL = "https://demeterfragrance.com/sandalwood.html";
     private final int timeWait = 10;
+    String PATTERN = "//div[@data-item-code='%']";
 
     @FindBy(name = "quantity")
     private WebElement productsQuantity;
@@ -24,8 +25,9 @@ public class ProductPage extends AbstractPage {
 
     @FindBy(id = "fc")
     private WebElement cartPreview;
+    
 
-    @FindBy(xpath= "//*[@id=\"fc-cart-form\"]/div[1]/div[2]/div/div[4]")
+    @FindBy(xpath= PATTERN.replace("%", "FreeItem50"))
     private WebElement freeItem;
 
 

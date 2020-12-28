@@ -10,6 +10,7 @@ import page.abstractPages.AbstractPage;
 import static util.Resolver.resolvePrice;
 
 public class CertificatePage extends AbstractPage {
+    @SuppressWarnings("SpellCheckingInspection")
     private final String CERTIFICATEPAGE_URL = "https://demeterfragrance.com/gift-certificate.html";
     private Certificate certificate;
 
@@ -25,6 +26,7 @@ public class CertificatePage extends AbstractPage {
     @FindBy(id = "price_10")
     private WebElement price;
 
+    @SuppressWarnings("SpellCheckingInspection")
     @FindBy(className = "addtocart")
     private WebElement addButton;
 

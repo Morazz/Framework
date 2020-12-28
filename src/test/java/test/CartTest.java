@@ -15,7 +15,6 @@ public class CartTest extends CommonConditions {
                 .addProducts(productsAmount)
                 .goToCart()
                 .checkFreeGift();
-        
         assertThat(expectedCartState).isTrue();
     }
 
