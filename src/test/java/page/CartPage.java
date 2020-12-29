@@ -32,11 +32,12 @@ public class CartPage extends AbstractPage {
 
     public CartPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
+        //PageFactory.initElements(driver, this);
     }
 
     public CheckoutPage goToCheckoutPage() {
         logger.info("Going to checkout page");
+        waitElementVisibility(checkoutButton);
         checkoutButton.click();
         return new CheckoutPage(driver);
     }
