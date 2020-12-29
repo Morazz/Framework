@@ -12,7 +12,6 @@ import service.TestDataReader;
 
 public class CertificateBalancePage extends AbstractPage {
     private final String BALANCEPAGE_URL = "https://demeterfragrance.com/check-gift-card-balance.html";
-    private final String certificate = "123123";
     private final Logger logger = LogManager.getRootLogger();
 
 

@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import page.abstractPages.AbstractPage;
 
 import static util.Resolver.resolvePrice;
@@ -35,7 +37,6 @@ public class CartPage extends AbstractPage {
 
     public CheckoutPage goToCheckoutPage() {
         logger.info("Going to checkout page");
-        //waitElementToBeClickable(driver, checkoutButton);
         checkoutButton.click();
         return new CheckoutPage(driver);
     }

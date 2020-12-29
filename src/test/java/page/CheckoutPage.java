@@ -15,10 +15,10 @@ import java.util.List;
 
 import static page.abstractPages.AbstractPage.waitElementToBeClickable;
 import static page.abstractPages.AbstractPage.waitElementVisibility;
+import static util.Resolver.resolveTotalPrice;
 
 public class CheckoutPage {
     private WebDriver driver;
-int timeWait = 10;
 
     @FindBy(id = "use_different_addresses")
     private WebElement billingAddressOption;
@@ -32,6 +32,9 @@ int timeWait = 10;
     @FindBy(xpath = "//*[@class='fc-alert fc-alert--danger show']")
     private WebElement getWarning;
 
+    @FindBy(className = "fc-subtotal__value")
+    private WebElement subtotalValue;
+
     @FindBy(className = "fc-transaction__ui__toggle")
     private WebElement enterCouponButton;
 
@@ -43,12 +46,6 @@ int timeWait = 10;
 
     @FindBy(id = "cc_number")
     private WebElement cardNumber;
-
-    @FindBy(id = "cc_exp_month")
-    private WebElement expirationMonth;
-
-    @FindBy(id = "cc_exp_year")
-    private WebElement expirationYear;
 
     @FindBy(id = "cc_cvv2")
     private WebElement csc;
@@ -75,7 +72,9 @@ int timeWait = 10;
         return warning.getText();
     }
 
-    //*[@id="fc-payment-method-plastic-new"]/div[2]
+    public double getTotalPrice() {
+        return resolveTotalPrice(subtotalValue.getText());
+    }
 
     public String enterCard() {
         cardNumber.click();

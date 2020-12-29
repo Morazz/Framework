@@ -8,13 +8,12 @@ import service.TestDataReader;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CartTest extends CommonConditions {
-    private final String productsAmount = "100";
 
     @Test
     public void addProductsTest() {
         CartPage cartPage = new ProductPage(driver)
                 .openPage()
-                .addProducts(productsAmount)
+                .addProducts(TestDataReader.getTestData("test.data.count"))
                 .goToCart();
 
         int amount = cartPage
@@ -30,7 +29,7 @@ public class CartTest extends CommonConditions {
     public void freeItemIfPriceIsFiftyOrGreaterTest() {
         CartPage cartPage = new ProductPage(driver)
                 .openPage()
-                .addProducts(productsAmount)
+                .addProducts(TestDataReader.getTestData("test.data.count"))
                 .goToCart();
 
         int amount = cartPage
@@ -40,9 +39,8 @@ public class CartTest extends CommonConditions {
         boolean freeItem = cartPage
                 .checkFreeGift();
 
-        System.out.println(amount);
-        assertThat(amount).isEqualTo(2);
-        assertThat(totalPrice).isGreaterThanOrEqualTo(50.00);
+        assertThat(amount).isEqualTo(TestDataReader.getTestData("test.data.cart.amount"));
+        assertThat(totalPrice).isGreaterThanOrEqualTo(Integer.parseInt(TestDataReader.getTestData("test.data.cart.minprice")));
         assertThat(freeItem).isTrue();
     }
 
@@ -50,7 +48,7 @@ public class CartTest extends CommonConditions {
     public void addBillingAddressOption() {
         boolean expectedBillingAddressState = new ProductPage(driver)
                 .openPage()
-                .addProducts(productsAmount)
+                .addProducts(TestDataReader.getTestData("test.data.count"))
                 .goToCart()
                 .goToCheckoutPage()
                 .billingAddressIsDisplayed();

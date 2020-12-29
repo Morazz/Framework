@@ -13,17 +13,22 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CheckoutTest extends CommonConditions{
-    private String cardNumber = "first";
 
     @Test
     public void enterInvalidCouponCodeTest() {
-        String expectedMessage = new ProductPage(driver)
+        CheckoutPage checkoutPage = new ProductPage(driver)
                 .openPage()
                 .addProducts(TestDataReader.getTestData("test.data.count"))
                 .goToCart()
-                .goToCheckoutPage()
+                .goToCheckoutPage();
+
+        double priceBefore = checkoutPage.getTotalPrice();
+        String expectedMessage = checkoutPage
                 .enterCouponCode(TestDataReader.getTestData("test.data.promocode"));
+        double priceAfter = checkoutPage.getTotalPrice();
+
         assertThat(expectedMessage).isEqualTo(TestDataReader.getTestData("test.data.coupon.error"));
+        assertThat(priceBefore).isEqualTo(priceAfter);
     }
 
     @Test
@@ -33,6 +38,7 @@ public class CheckoutTest extends CommonConditions{
                 .addProducts(TestDataReader.getTestData("test.data.count"))
                 .goToCart()
                 .goToCheckoutPage();
+
         String warning = checkoutPage.enterCard();
 
         assertThat(warning).isEqualTo(TestDataReader.getTestData("test.data.card.number.error"));
