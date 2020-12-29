@@ -11,24 +11,12 @@ import page.abstractPages.AbstractPage;
 
 public class ProductPage extends AbstractPage {
     private final String PRODUCTPAGE_URL = "https://demeterfragrance.com/sandalwood.html";
-    private final int timeWait = 10;
-    String PATTERN = "//div[@data-item-code='%']";
 
     @FindBy(name = "quantity")
     private WebElement productsQuantity;
 
     @FindBy(className = "add_button")
     private WebElement addButton;
-
-    @FindBy(className = "fc-fixed-button-right")
-    private WebElement cartLink;
-
-    @FindBy(id = "fc")
-    private WebElement cartPreview;
-    
-
-   // @FindBy(xpath= PATTERN.replace("%", "FreeItem50"))
-    //private WebElement freeItem;
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -42,20 +30,9 @@ public class ProductPage extends AbstractPage {
         return this;
     }
 
-   /* public boolean checkFreeGift() {
-        //return itemsInfo.findElements(By.id("fc-cart--fixed-width")).size() > 0;
-        new WebDriverWait(driver, timeWait)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='fc-cart-form']/div[1]/div[2]/div/div[4]")));
-        return freeItem.isDisplayed();
-    } */
-
     public CartPage goToCart() {
-        new WebDriverWait(driver, timeWait)
-                .until(ExpectedConditions.textToBe(By.className("fc-subtotal__label"), "Subtotal"));
-        //cartLink.click();
         return new CartPage(driver);
     }
-
 
     @Override
     public ProductPage openPage() {

@@ -40,6 +40,7 @@ public class CartTest extends CommonConditions {
         boolean freeItem = cartPage
                 .checkFreeGift();
 
+        System.out.println(amount);
         assertThat(amount).isEqualTo(2);
         assertThat(totalPrice).isGreaterThanOrEqualTo(50.00);
         assertThat(freeItem).isTrue();
