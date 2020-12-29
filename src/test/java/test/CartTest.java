@@ -1,14 +1,11 @@
 package test;
 
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.Test;
 import page.CartPage;
 import page.ProductPage;
 import service.TestDataReader;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
 
 public class CartTest extends CommonConditions {
     private final String productsAmount = "100";
@@ -25,7 +22,7 @@ public class CartTest extends CommonConditions {
         double totalPrice = cartPage
                 .getTotalPrice();
 
-        assertThat(amount).isEqualTo(2);
+        assertThat(amount).isEqualTo(1);
         assertThat(totalPrice).isEqualTo(360.0);
     }
 
@@ -58,17 +55,5 @@ public class CartTest extends CommonConditions {
                 .billingAddressIsDisplayed();
 
         assertThat(expectedBillingAddressState).isTrue();
-    }
-
-    public void enterInvalidCouponCodeTest() {
-        ProductPage productPage = new ProductPage(driver)
-                .openPage()
-                .addProducts(productsAmount);
-        String expectedMessage = productPage
-                .goToCart()
-                .goToCheckoutPage()
-                .enterCouponCode(TestDataReader.getTestData("test.data.promocode"));
-
-        assertThat(expectedMessage).isEqualTo(TestDataReader.getTestData("test.data.coupon.error"));
     }
 }

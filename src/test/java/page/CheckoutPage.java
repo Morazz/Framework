@@ -1,5 +1,7 @@
 package page;
 
+import model.Card;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import service.TestDataReader;
+
+import java.util.List;
 
 import static page.abstractPages.AbstractPage.waitElementToBeClickable;
 import static page.abstractPages.AbstractPage.waitElementVisibility;
@@ -24,6 +28,9 @@ int timeWait = 10;
 
     @FindBy(className = "fc-alert")
     private WebElement warning;
+
+    @FindBy(xpath = "//*[@class='fc-alert fc-alert--danger show']")
+    private WebElement getWarning;
 
     @FindBy(className = "fc-transaction__ui__toggle")
     private WebElement enterCouponButton;
@@ -65,14 +72,19 @@ int timeWait = 10;
         couponInput.sendKeys(couponCode);
         applyCouponButton.click();
         waitElementVisibility(driver, warning);
-        /* new WebDriverWait(driver, timeWait)
-                .until(driver -> warning.isDisplayed()); */
         return warning.getText();
     }
+
+    //*[@id="fc-payment-method-plastic-new"]/div[2]
 
     public String enterCard() {
         cardNumber.click();
         cardNumber.sendKeys(TestDataReader.getTestData("test.data.card"));
-        return cardNumber.getText();
+        csc.click();
+        csc.sendKeys(TestDataReader.getTestData("test.data.CSC"));
+        csc.submit();
+        waitElementVisibility(driver, getWarning);
+
+        return getWarning.getText();
     }
 }
