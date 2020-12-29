@@ -1,12 +1,10 @@
-package page;
+package page.storesPage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import page.abstractPages.AbstractPage;
+import page.AbstractPage;
 
 public class StoresPage extends AbstractPage {
     private final String STORES_URL = "https://demeterfragrance.com/stores/";
@@ -29,11 +27,10 @@ public class StoresPage extends AbstractPage {
         zipInput.click();
         zipInput.sendKeys(zip);
         findButton.click();
-        waitElementVisibility(driver, storesList);
+        waitElementVisibility(storesList);
         return storesList.isDisplayed();
     }
 
-    @Override
     public StoresPage openPage() {
         driver.navigate().to(STORES_URL);
         return this;

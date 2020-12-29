@@ -1,9 +1,8 @@
 package test;
 
 import model.Certificate;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.CertificatePage;
+import page.certificatePage.CertificatePage;
 import service.CertificateCreator;
 
 import static org.assertj.core.api.Assertions.assertThat;

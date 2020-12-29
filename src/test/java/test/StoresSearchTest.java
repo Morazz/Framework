@@ -1,8 +1,7 @@
 package test;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.StoresPage;
+import page.storesPage.StoresPage;
 import service.TestDataReader;
 
 import static org.assertj.core.api.Assertions.assertThat;

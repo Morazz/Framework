@@ -1,14 +1,9 @@
 package test;
 
-import model.Card;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import page.CheckoutPage;
-import page.ProductPage;
-import service.CardCreator;
+import page.checkoutPage.CheckoutPage;
+import page.productPage.ProductPage;
 import service.TestDataReader;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

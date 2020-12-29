@@ -1,4 +1,4 @@
-package page;
+package page.certificatePage;
 
 import model.Certificate;
 import org.apache.logging.log4j.LogManager;
@@ -7,10 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import page.abstractPages.AbstractPage;
+import page.AbstractPage;
 import service.TestDataReader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import static util.Resolver.resolvePrice;
 import static util.Resolver.resolveTemplate;
@@ -59,7 +57,6 @@ public class CertificatePage extends AbstractPage {
         return certificate;
     }
 
-    @Override
     public CertificatePage openPage() {
         driver.navigate().to(CERTIFICATEPAGE_URL);
         return this;

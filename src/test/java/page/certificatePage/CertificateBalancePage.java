@@ -1,4 +1,4 @@
-package page;
+package page.certificatePage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import page.abstractPages.AbstractPage;
+import page.AbstractPage;
 import service.TestDataReader;
 
 public class CertificateBalancePage extends AbstractPage {
@@ -37,7 +37,6 @@ public class CertificateBalancePage extends AbstractPage {
         return certificateBalance.isDisplayed();
     }
 
-    @Override
     public CertificateBalancePage openPage() {
         driver.navigate().to(BALANCEPAGE_URL);
         return this;

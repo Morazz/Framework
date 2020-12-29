@@ -1,23 +1,15 @@
-package page;
+package page.checkoutPage;
 
-import model.Card;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import page.AbstractPage;
 import service.TestDataReader;
 
-import java.util.List;
-
-import static page.abstractPages.AbstractPage.waitElementToBeClickable;
-import static page.abstractPages.AbstractPage.waitElementVisibility;
 import static util.Resolver.resolveTotalPrice;
 
-public class CheckoutPage {
+public class CheckoutPage extends AbstractPage {
     private WebDriver driver;
 
     @FindBy(id = "use_different_addresses")
@@ -51,12 +43,12 @@ public class CheckoutPage {
     private WebElement csc;
 
     public CheckoutPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public boolean billingAddressIsDisplayed() {
-        waitElementToBeClickable(driver, billingAddressOption);
+        waitElementToBeClickable(billingAddressOption);
         if (!billingAddressOption.isSelected()) {
             billingAddressOption.click();
         }
@@ -65,10 +57,10 @@ public class CheckoutPage {
 
     public String enterCouponCode(String couponCode) {
         enterCouponButton.click();
-        waitElementToBeClickable(driver, couponInput);
+        waitElementToBeClickable(couponInput);
         couponInput.sendKeys(couponCode);
         applyCouponButton.click();
-        waitElementVisibility(driver, warning);
+        waitElementVisibility(warning);
         return warning.getText();
     }
 
@@ -82,7 +74,7 @@ public class CheckoutPage {
         csc.click();
         csc.sendKeys(TestDataReader.getTestData("test.data.CSC"));
         csc.submit();
-        waitElementVisibility(driver, getWarning);
+        waitElementVisibility(getWarning);
 
         return getWarning.getText();
     }

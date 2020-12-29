@@ -1,8 +1,7 @@
 package test;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.CertificateBalancePage;
+import page.certificatePage.CertificateBalancePage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

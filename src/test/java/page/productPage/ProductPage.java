@@ -1,13 +1,11 @@
-package page;
+package page.productPage;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import page.abstractPages.AbstractPage;
+import page.AbstractPage;
+import page.cartPage.CartPage;
 
 public class ProductPage extends AbstractPage {
     private final String PRODUCTPAGE_URL = "https://demeterfragrance.com/sandalwood.html";
@@ -34,7 +32,6 @@ public class ProductPage extends AbstractPage {
         return new CartPage(driver);
     }
 
-    @Override
     public ProductPage openPage() {
         driver.navigate().to(PRODUCTPAGE_URL);
         return this;

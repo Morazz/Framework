@@ -1,11 +1,12 @@
 package test;
 
 import org.testng.annotations.Test;
-import page.CartPage;
-import page.ProductPage;
+import page.cartPage.CartPage;
+import page.productPage.ProductPage;
 import service.TestDataReader;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static util.Resolver.resolvePrice;
 
 public class CartTest extends CommonConditions {
 
@@ -39,7 +40,7 @@ public class CartTest extends CommonConditions {
         boolean freeItem = cartPage
                 .checkFreeGift();
 
-        assertThat(amount).isEqualTo(TestDataReader.getTestData("test.data.cart.amount"));
+        assertThat(amount).isEqualTo(resolvePrice(TestDataReader.getTestData("test.data.cart.amount")));
         assertThat(totalPrice).isGreaterThanOrEqualTo(Integer.parseInt(TestDataReader.getTestData("test.data.cart.minprice")));
         assertThat(freeItem).isTrue();
     }
