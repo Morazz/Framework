@@ -32,7 +32,7 @@ public class CartPage extends AbstractPage {
 
     public CartPage(WebDriver driver) {
         super(driver);
-        //PageFactory.initElements(driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     public CheckoutPage goToCheckoutPage() {
