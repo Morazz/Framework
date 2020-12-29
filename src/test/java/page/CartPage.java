@@ -37,7 +37,6 @@ public class CartPage extends AbstractPage {
 
     public CheckoutPage goToCheckoutPage() {
         logger.info("Going to checkout page");
-        waitElementVisibility(checkoutButton);
         checkoutButton.click();
         return new CheckoutPage(driver);
     }
