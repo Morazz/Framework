@@ -2,6 +2,7 @@ package test;
 
 import org.hamcrest.MatcherAssert;
 import org.testng.annotations.Test;
+import page.CartPage;
 import page.ProductPage;
 import service.TestDataReader;
 
@@ -14,39 +15,36 @@ public class CartTest extends CommonConditions {
 
     @Test
     public void addProductsTest() {
-        ProductPage productPage = new ProductPage(driver)
+        CartPage cartPage = new ProductPage(driver)
                 .openPage()
-                .addProducts(productsAmount);
+                .addProducts(productsAmount)
+                .goToCart();
 
-        int amount = productPage
-                .goToCart()
+        int amount = cartPage
                 .getProductsAmount();
-        double totalPrice = productPage
-                .goToCart()
+        double totalPrice = cartPage
                 .getTotalPrice();
 
         assertThat(amount).isEqualTo(2);
-        assertThat(totalPrice).isEqualTo(360.00);
+        assertThat(totalPrice).isEqualTo(360.0);
     }
 
     @Test
     public void freeItemIfPriceIsFiftyOrGreaterTest() {
-        ProductPage productPage = new ProductPage(driver)
+        CartPage cartPage = new ProductPage(driver)
                 .openPage()
-                .addProducts(productsAmount);
+                .addProducts(productsAmount)
+                .goToCart();
 
-        int amount = productPage
-                .goToCart()
+        int amount = cartPage
                 .getProductsAmount();
-       /* double totalPrice = productPage
-                .goToCart()
-                .getTotalPrice(); */
-        boolean freeItem = productPage
-                .goToCart()
+        double totalPrice = cartPage
+                .getTotalPrice();
+        boolean freeItem = cartPage
                 .checkFreeGift();
 
         assertThat(amount).isEqualTo(2);
-        //assertThat(totalPrice).isGreaterThanOrEqualTo(50.00);
+        assertThat(totalPrice).isGreaterThanOrEqualTo(50.00);
         assertThat(freeItem).isTrue();
     }
 

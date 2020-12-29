@@ -10,6 +10,10 @@ public class Resolver {
         return  Double.parseDouble(price);
     }
 
+    public static double resolveTotalPrice(String price) {
+        return Double.parseDouble(price.substring(1));
+    }
+
     public static String resolveTemplate(String template, int data){
         return String.format(template, data);
     }

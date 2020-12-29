@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import page.abstractPages.AbstractPage;
 
 import static util.Resolver.resolvePrice;
+import static util.Resolver.resolveTotalPrice;
 
 public class CartPage extends AbstractPage {
 
@@ -20,7 +21,6 @@ public class CartPage extends AbstractPage {
 
     @FindBy(className = "fc-subtotal__value")
     private WebElement subtotalValue;
-
 
     @FindBy(id = "fc-cart")
     private WebElement itemsInfo;
@@ -70,8 +70,10 @@ public class CartPage extends AbstractPage {
     }
 
     public double getTotalPrice() {
-        System.out.println(subtotalValue.getAttribute("value"));
-        return resolvePrice(subtotalValue.getAttribute("value"));
+        System.out.println(driver.findElement(By.className("fc-subtotal__value")).getText());
+        System.out.println(resolveTotalPrice(subtotalValue.getText()));
+        return resolveTotalPrice(subtotalValue.getText());
+        //return resolvePrice(driver.findElement(By.className("fc-subtotal__value")).getAttribute("value"));
     }
 
     @Override
