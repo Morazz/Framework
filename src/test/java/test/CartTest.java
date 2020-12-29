@@ -6,6 +6,7 @@ import page.ProductPage;
 import service.TestDataReader;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static util.Resolver.resolvePrice;
 
 public class CartTest extends CommonConditions {
 
@@ -40,7 +41,7 @@ public class CartTest extends CommonConditions {
                 .checkFreeGift();
 
         assertThat(amount).isEqualTo(TestDataReader.getTestData("test.data.cart.amount"));
-        assertThat(totalPrice).isGreaterThanOrEqualTo(Integer.parseInt(TestDataReader.getTestData("test.data.cart.minprice")));
+        assertThat(totalPrice).isGreaterThanOrEqualTo(resolvePrice(TestDataReader.getTestData("test.data.cart.minprice")));
         assertThat(freeItem).isTrue();
     }
 
