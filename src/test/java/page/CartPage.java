@@ -21,6 +21,7 @@ public class CartPage extends AbstractPage {
     @FindBy(className = "fc-subtotal__value")
     private WebElement subtotalValue;
 
+
     @FindBy(id = "fc-cart")
     private WebElement itemsInfo;
 
@@ -69,6 +70,7 @@ public class CartPage extends AbstractPage {
     }
 
     public double getTotalPrice() {
+        System.out.println(subtotalValue.getAttribute("value"));
         return resolvePrice(subtotalValue.getAttribute("value"));
     }
 

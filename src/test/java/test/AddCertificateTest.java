@@ -15,9 +15,7 @@ public class AddCertificateTest extends CommonConditions{
         Certificate testCertificate = CertificateCreator.withParametersFromProperty("first");
         Certificate expectedCertificate = new CertificatePage(driver)
                 .openPage()
-                .addCertificate();
-        System.out.println(testCertificate.getRecipientName());
-        System.out.println(expectedCertificate.getRecipientName());
+                .addCertificate("first");
         assertThat(expectedCertificate).isEqualTo(testCertificate);
     }
 }

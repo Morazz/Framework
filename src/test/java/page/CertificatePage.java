@@ -13,9 +13,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static util.Resolver.resolvePrice;
+import static util.Resolver.resolveTemplate;
 
 public class CertificatePage extends AbstractPage {
     private final String CERTIFICATEPAGE_URL = "https://demeterfragrance.com/gift-certificate.html";
+    public static final String RECIPIENT_NAME_TEMPLATE = "test.data.%s.recipient";
+    public static final String RECIPIENT_EMAIL_TEMPLATE = "test.data.%s.email";
+    public static final String SENDER_NAME_TEMPLATE = "test.data.%s.sender";
     private Certificate certificate;
     private Logger log = LogManager.getRootLogger();
 
@@ -39,15 +43,18 @@ public class CertificatePage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public Certificate addCertificate() {
+    public Certificate addCertificate(String template) {
         recipient.click();
-        recipient.sendKeys(TestDataReader.getTestData("test.data.first.recipient"));
+        recipient.sendKeys(TestDataReader.getTestData(resolveTemplate(RECIPIENT_NAME_TEMPLATE, template)));
         email.click();
-        email.sendKeys(TestDataReader.getTestData("test.data.first.email"));
+        email.sendKeys(TestDataReader.getTestData(resolveTemplate(RECIPIENT_EMAIL_TEMPLATE, template)));
         sender.click();
-        sender.sendKeys(TestDataReader.getTestData("test.data.first.sender"));
+        sender.sendKeys(TestDataReader.getTestData(resolveTemplate(SENDER_NAME_TEMPLATE, template)));
         price.click();
-        certificate = new Certificate(recipient.getText(), email.getText(), sender.getText(), resolvePrice(price.getAttribute("value")));
+        certificate = new Certificate(recipient.getAttribute("value"),
+                                      email.getAttribute("value"),
+                                      sender.getAttribute("value"),
+                                      resolvePrice(price.getAttribute("value")));
         addButton.click();
         return certificate;
     }
