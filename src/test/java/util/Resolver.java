@@ -7,7 +7,7 @@ public class Resolver {
     }
 
     public static double resolvePrice(String price){
-        return  Double.parseDouble(price.substring(price.length()-1));
+        return  Double.parseDouble(price);
     }
 
     public static String resolveTemplate(String template, int data){

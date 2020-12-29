@@ -1,18 +1,23 @@
 package page;
 
 import model.Certificate;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import page.abstractPages.AbstractPage;
+import service.TestDataReader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static util.Resolver.resolvePrice;
 
 public class CertificatePage extends AbstractPage {
-    @SuppressWarnings("SpellCheckingInspection")
     private final String CERTIFICATEPAGE_URL = "https://demeterfragrance.com/gift-certificate.html";
     private Certificate certificate;
+    private Logger log = LogManager.getRootLogger();
 
     @FindBy(id="recipient_name")
     private WebElement recipient;
@@ -34,16 +39,17 @@ public class CertificatePage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public Certificate addCertificate(Certificate certificate) {
+    public Certificate addCertificate() {
         recipient.click();
-        recipient.sendKeys(certificate.getRecipientName());
+        recipient.sendKeys(TestDataReader.getTestData("test.data.first.recipient"));
         email.click();
-        email.sendKeys(certificate.getRecipientEmail());
+        email.sendKeys(TestDataReader.getTestData("test.data.first.email"));
         sender.click();
-        sender.sendKeys(certificate.getSenderName());
+        sender.sendKeys(TestDataReader.getTestData("test.data.first.sender"));
         price.click();
+        certificate = new Certificate(recipient.getText(), email.getText(), sender.getText(), resolvePrice(price.getAttribute("value")));
         addButton.click();
-        return new Certificate(recipient.getText(), email.getText(), sender.getText(), resolvePrice(price.getText()));
+        return certificate;
     }
 
     @Override

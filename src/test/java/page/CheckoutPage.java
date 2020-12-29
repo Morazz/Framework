@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import service.TestDataReader;
 
 import static page.abstractPages.AbstractPage.waitElementToBeClickable;
 import static page.abstractPages.AbstractPage.waitElementVisibility;
@@ -33,6 +34,18 @@ int timeWait = 10;
     @FindBy(className = "fc-coupon-entry__apply")
     private WebElement applyCouponButton;
 
+    @FindBy(id = "cc_number")
+    private WebElement cardNumber;
+
+    @FindBy(id = "cc_exp_month")
+    private WebElement expirationMonth;
+
+    @FindBy(id = "cc_exp_year")
+    private WebElement expirationYear;
+
+    @FindBy(id = "cc_cvv2")
+    private WebElement csc;
+
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -55,5 +68,11 @@ int timeWait = 10;
         /* new WebDriverWait(driver, timeWait)
                 .until(driver -> warning.isDisplayed()); */
         return warning.getText();
+    }
+
+    public String enterCard() {
+        cardNumber.click();
+        cardNumber.sendKeys(TestDataReader.getTestData("test.data.card"));
+        return cardNumber.getText();
     }
 }

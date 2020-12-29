@@ -14,6 +14,7 @@ public class CertificateCreator {
         certificateNumber = certificateNumber.toLowerCase();
 
         String recipientName = resolveTemplate(RECIPIENT_NAME_TEMPLATE, certificateNumber);
+        System.out.println(recipientName);
         String recipientEmail = resolveTemplate(RECIPIENT_EMAIL_TEMPLATE, certificateNumber);
         String senderName = resolveTemplate(SENDER_NAME_TEMPLATE, certificateNumber);
         String price = resolveTemplate(PRICE_TEMPLATE, certificateNumber);

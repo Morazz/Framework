@@ -12,11 +12,12 @@ public class AddCertificateTest extends CommonConditions{
 
     @Test
     public void addCertificate() {
-        String certificateNumber = "first";
-        Certificate testCertificate = CertificateCreator.withParametersFromProperty(certificateNumber);
+        Certificate testCertificate = CertificateCreator.withParametersFromProperty("first");
         Certificate expectedCertificate = new CertificatePage(driver)
                 .openPage()
-                .addCertificate(testCertificate);
+                .addCertificate();
+        System.out.println(testCertificate.getRecipientName());
+        System.out.println(expectedCertificate.getRecipientName());
         assertThat(expectedCertificate).isEqualTo(testCertificate);
     }
 }
