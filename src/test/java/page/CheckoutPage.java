@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static page.abstractPages.AbstractPage.waitElementToBeClickable;
+import static page.abstractPages.AbstractPage.waitElementVisibility;
 
 public class CheckoutPage {
     private WebDriver driver;
@@ -37,7 +38,7 @@ int timeWait = 10;
         PageFactory.initElements(driver, this);
     }
 
-    public boolean checkBillingAddressState() {
+    public boolean billingAddressIsDisplayed() {
         waitElementToBeClickable(driver, billingAddressOption);
         if (!billingAddressOption.isSelected()) {
             billingAddressOption.click();
@@ -50,8 +51,9 @@ int timeWait = 10;
         waitElementToBeClickable(driver, couponInput);
         couponInput.sendKeys(couponCode);
         applyCouponButton.click();
-        new WebDriverWait(driver, timeWait)
-                .until(driver -> warning.isDisplayed());
+        waitElementVisibility(driver, warning);
+        /* new WebDriverWait(driver, timeWait)
+                .until(driver -> warning.isDisplayed()); */
         return warning.getText();
     }
 }

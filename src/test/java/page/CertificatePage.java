@@ -26,7 +26,6 @@ public class CertificatePage extends AbstractPage {
     @FindBy(id = "price_10")
     private WebElement price;
 
-    @SuppressWarnings("SpellCheckingInspection")
     @FindBy(className = "addtocart")
     private WebElement addButton;
 

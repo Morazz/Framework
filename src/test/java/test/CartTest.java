@@ -57,7 +57,7 @@ public class CartTest extends CommonConditions {
                 .addProducts(productsAmount)
                 .goToCart()
                 .goToCheckoutPage()
-                .checkBillingAddressState();
+                .billingAddressIsDisplayed();
 
         assertThat(expectedBillingAddressState).isTrue();
     }
