@@ -40,8 +40,8 @@ public class CartTest extends CommonConditions {
         boolean freeItem = cartPage
                 .checkFreeGift();
 
-        assertThat(amount).isEqualTo(resolvePrice(TestDataReader.getTestData("test.data.cart.amount")));
-        assertThat(totalPrice).isGreaterThanOrEqualTo(Integer.parseInt(TestDataReader.getTestData("test.data.cart.minprice")));
+        assertThat(amount).isEqualTo(TestDataReader.getTestData("test.data.cart.amount"));
+        assertThat(totalPrice).isGreaterThanOrEqualTo(resolvePrice(TestDataReader.getTestData("test.data.cart.minprice")));
         assertThat(freeItem).isTrue();
     }
 
