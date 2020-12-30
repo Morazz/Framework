@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.support.PageFactory;
 import page.AbstractPage;
 import page.checkoutPage.CheckoutPage;
 
-import static util.Resolver.resolvePrice;
 import static util.Resolver.resolveTotalPrice;
 
 public class CartPage extends AbstractPage {
@@ -29,13 +29,12 @@ public class CartPage extends AbstractPage {
 
     public CartPage(WebDriver driver) {
         super(driver);
-        //PageFactory.initElements(driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     public CheckoutPage goToCheckoutPage() {
         logger.info("Going to checkout page");
         waitElementVisibility(checkoutButton).click();
-        //checkoutButton.click();
         return new CheckoutPage(driver);
     }
 
